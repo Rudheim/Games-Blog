@@ -4,7 +4,7 @@ const LatestNews = () => {
   return (
     <div className="card main-article">
       <div className="card-image">
-        <img src="https://materializecss.com/images/sample-1.jpg" />
+        <img src="https://materializecss.com/images/sample-1.jpg" alt='Главная новость' />
       </div>
       <div className="card-stacked">
         <div className="card-content">
@@ -18,7 +18,7 @@ const LatestNews = () => {
               <i className="material-icons left">access_time</i><span>Час назад</span>
             </div>
             <div className="col s6 right-align read">
-            <i className="material-icons right">sort</i><a href="/">Читать далее</a>
+              <a href="/"><i className="material-icons right">sort</i>Читать далее</a>
             </div>
           </div>
         </div>

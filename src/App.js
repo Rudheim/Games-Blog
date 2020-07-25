@@ -1,26 +1,29 @@
 import React from 'react';
 import Navbar from './components/navbar/Navbar'
-import Dashboard from './components/dashboard/Dashboard';
-import Categories from './components/dashboard/Categories';
+import HomePage from './components/dashboard/HomePage';
 import Footer from './components/footer/Footer';
+import {BrowserRouter, Route, Switch} from 'react-router-dom'
+import SignIn from './components/auth/SignIn';
+import SignUp from './components/auth/SignUp';
+import CreateArticle from './components/news/CreateArticle';
 
 
 function App() {
 
   return (
     <>
-      <Navbar />
-      <div className="container">
-        <div className="row dashboard">
-          <Dashboard />
-          <div className="col l3 hide-on-med-and-down">
-            <div className="categories">
-              <Categories />
-            </div>
-          </div>
-        </div>
-      </div>
-      <Footer />
+      <BrowserRouter>
+        <Navbar />
+        <main className="container dashboard">
+          <Switch>
+            <Route exact path='/' component={HomePage} />
+            <Route path='/signup' component={SignUp} />
+            <Route path='/signin' component={SignIn} />
+            <Route path='/createarticle' component={CreateArticle} />
+          </Switch>
+        </main>
+        <Footer />
+      </BrowserRouter>
    </>
   );
 }

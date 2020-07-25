@@ -2,10 +2,10 @@ import React from 'react';
 
 const SignedInLinks = () => {
   return (
-    <>
-      <li><a href='/' className="btn btn-floating pink lighten-1">NN</a></li>
-      <li><a href='/'>Выход</a></li>
-    </>
+    <ul className="sign-in-links">
+      <li><span>Привет, Пользователь</span></li>
+      <li><a href='/'><i className="material-icons right">exit_to_app</i>Выход</a></li>
+    </ul>
   );
 }
  

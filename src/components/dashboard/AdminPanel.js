@@ -1,8 +1,15 @@
 import React from 'react';
+import {Link} from 'react-router-dom'
 
 const AdminPanel = () => {
   return ( 
-    <a class="btn-floating waves-effect waves-light blue"><i class="material-icons">add</i>Добавить новость</a>
+    <div className="col l3 hide-on-med-and-down">
+      <div className="admin-panel">
+        <div className="collection">
+          <Link to="/createarticle" className="collection-item blue-text"><i className="material-icons left">add</i>Добавить новость</Link>
+        </div>
+      </div>
+    </div>
   );
 }
  

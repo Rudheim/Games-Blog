@@ -1,11 +1,12 @@
 import React from 'react';
+import { NavLink } from 'react-router-dom';
 
 const SignedOutLinks = () => {
   return (
-    <>
-      <li><a href='/'>Войти</a></li>
-      <li><a href='/'>Регистрация</a></li>
-    </>
+    <ul className="sign-out-links">
+      <li><NavLink to='/signin' activeClassName="selected-nav">Войти</NavLink></li>
+      <li><NavLink  to='/signup' activeClassName="selected-nav">Регистрация</NavLink></li>
+    </ul>
   );
 }
  

@@ -2,6 +2,7 @@ import React, {useEffect} from 'react';
 import M from "materialize-css";
 import SignedOutLinks from './SignedOutLinks';
 import SignedInLinks from './SignedInLinks';
+import {NavLink, Link} from 'react-router-dom'
 
 
  const Navbar = () => {
@@ -16,47 +17,50 @@ import SignedInLinks from './SignedInLinks';
   })
 
    return (
+     <header>
       <nav className="white">
-        <a href='/' data-target="mobile_menu" className="sidenav-trigger grey-text text-darken-4 right"><i className="material-icons">menu</i></a>
+        <span data-target="mobile_menu" className="sidenav-trigger grey-text text-darken-4 right hide-on-large-only"><i className="material-icons">menu</i></span>
         <div className="nav-wrapper container ">
-          <a href='/' className="brand-logo left grey-text text-darken-4">Блеф</a>
+          <Link to='/' className="brand-logo left grey-text text-darken-4" >Блеф</Link>
           <ul className="right hide-on-med-and-down">
-            <li><a href='/'>Новости</a></li>
-            <li><a href='/'>Фото</a></li>
-            <li><a href='/'>Видео</a></li>
-            <li><a href='/'>О нас</a></li>
-            <li><a href='/'>Контакты</a></li>
+            <li><NavLink exact to='/' activeClassName="selected-nav">Новости</NavLink></li>
+            <li><NavLink to='/'>Фото</NavLink></li>
+            <li><NavLink to='/'>Видео</NavLink></li>
+            <li><NavLink to='/'>О нас</NavLink></li>
+            <li><NavLink to='/'>Контакты</NavLink></li>
+            <li className="nav-divider"></li>
             <SignedOutLinks />
             <SignedInLinks />
           </ul>
         </div>
         <ul className="sidenav" id="mobile_menu">
-          <li><a href='/'>Новости</a></li>
+          <li><Link to='/'>Новости</Link></li>
           <li className="no-padding">
             <ul className="collapsible">
             <li>
-              <a className="collapsible-header">Категории</a>
+              <span className="collapsible-header">Категории</span>
               <div className="collapsible-body">
                 <ul>
-                  <li><a href='/'>Категория 1</a></li>
-                  <li><a href='/'>Категория 2</a></li>
-                  <li><a href='/'>Категория 3</a></li>
-                  <li><a href='/'>Категория 4</a></li>
-                  <li><a href='/'>Категория 5</a></li>
-                  <li><a href='/'>Категория 6</a></li>
+                  <li><NavLink to='/'>Категория 1</NavLink></li>
+                  <li><NavLink to='/'>Категория 2</NavLink></li>
+                  <li><NavLink to='/'>Категория 3</NavLink></li>
+                  <li><NavLink to='/'>Категория 4</NavLink></li>
+                  <li><NavLink to='/'>Категория 5</NavLink></li>
+                  <li><NavLink to='/'>Категория 6</NavLink></li>
                 </ul>
               </div>
               </li>
             </ul>
           </li>
-            <li><a href='/'>Фото</a></li>
-            <li><a href='/'>Видео</a></li>
-            <li><a href='/'>О нас</a></li>
-            <li><a href='/'>Контакты</a></li>
+            <li><NavLink to='/'>Фото</NavLink></li>
+            <li><NavLink to='/'>Видео</NavLink></li>
+            <li><NavLink to='/'>О нас</NavLink></li>
+            <li><NavLink to='/'>Контакты</NavLink></li>
             <SignedOutLinks />
             <SignedInLinks />
           </ul>
       </nav>
+      </header>
    );
  }
   

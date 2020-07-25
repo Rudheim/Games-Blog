@@ -3,7 +3,7 @@
   src: url(./fonts/RonduitCapitals.otf);
 }
 
-body {
+#root {
   display: flex;
   min-height: 100vh;
   flex-direction: column;
@@ -18,6 +18,10 @@ main {
   width: 100% !important;
 }
 
+.sidenav-trigger{
+  cursor: pointer;
+}
+
 /* FIXING SIDENAV LAYER */
 .sidenav-overlay{
   z-index: 0 !important;
@@ -29,6 +33,15 @@ nav{
   z-index: 1;
 }
 
+nav ul{
+  display: flex !important;
+}
+
+.nav-divider{
+  border-left: 1px solid rgb(204, 204, 204);
+  margin-right: 15px;
+}
+
 /* APPLYING SPECIAL FONT FOR THE LOGO */
 nav .brand-logo{
   font-family: "RonduitCapitals-Light";
@@ -37,12 +50,23 @@ nav .brand-logo{
 }
 
 /* TEXT COLOR OF THE NAV ELEMENTS */
-nav li a{
+nav li a, nav li span{
   color: #212121 !important;
+}
+
+.sign-in-links{
+ border-left: 1px solid !important;
 }
 
 /* ADDING SHADOW ON HOVER FOR NAV ELEMENTS */
 nav li a:hover{
+  background-color: rgb(255, 255, 255) !important;
+  -webkit-box-shadow: inset 0px -8px 0px -2px rgb(82, 146, 255);
+  -moz-box-shadow: inset 0px -8px 0px -2px rgb(82, 146, 255);
+  box-shadow: inset 0px -8px 0px -2px rgb(82, 146, 255);
+}
+
+.selected-nav{
   background-color: rgb(255, 255, 255) !important;
   -webkit-box-shadow: inset 0px -8px 0px -2px rgb(82, 146, 255);
   -moz-box-shadow: inset 0px -8px 0px -2px rgb(82, 146, 255);
@@ -54,15 +78,17 @@ nav li a:hover{
   padding-top: 64px;
 }
 
+
 /* FIXED CATEGORIES MENU */
-.categories{
+.categories,
+.admin-panel{
   position: fixed;
 }
-/* ICONS AND BADGES ALIGN */
-.categories{
-  margin-top: 10%;
-}
-.categories .collection{
+
+.categories .collection,
+.admin-panel .collection
+{
+  overflow: visible;
   border: none;
 }
 .categories .material-icons{
@@ -145,28 +171,74 @@ span.badge{
   max-height: 400px !important;
 }
 
+
+/* STYLING FORMS */
+.login-form{
+  width: 40% !important;
+  margin: 40px auto !important;
+  border: solid 1px rgb(204, 204, 204);
+  border-radius: 3px;
+  padding: 20px;
+  -webkit-box-shadow: 2px 2px 5px 0px rgba(0,0,0,0.75);
+  -moz-box-shadow: 2px 2px 5px 0px rgba(0,0,0,0.75);
+  box-shadow: 2px 2px 5px 0px rgba(0,0,0,0.75);
+}
+.login-form button{
+  margin-top: 20px;
+}
+/* ------INPUT FILEDS------ */
+/* label underline focus color */
+input[type=text]:not(.browser-default):focus:not([readonly]),
+input[type=email]:not(.browser-default):focus:not([readonly]),
+input[type=password]:not(.browser-default):focus:not([readonly]),
+textarea.materialize-textarea:focus:not([readonly]){
+  border-bottom: 1px solid rgb(63, 156, 255) !important;
+  box-shadow: 0 1px 0 0 rgb(63, 156, 255) !important;
+}
+/* label focus color */
+input[type=text]:not(.browser-default):focus:not([readonly])+label,
+input[type=email]:not(.browser-default):focus:not([readonly])+label,
+input[type=password]:not(.browser-default):focus:not([readonly])+label,
+textarea.materialize-textarea:focus:not([readonly])+label
+{
+  color:  rgb(63, 156, 255) !important; 
+  
+}
+.input-field .prefix.active{
+  color: rgb(63, 156, 255) !important;
+}
+/* FIXING BUG WITH LABELS GOING OUT OF THE SCREEN */
+input[type=text]:not(.browser-default).validate+label,
+input[type=email]:not(.browser-default).validate+label,
+input[type=password]:not(.browser-default).validate+label{
+  width: 70% !important;
+}
+
+.forever-hidden{
+  display: none !important;
+}
+
+/* FOOTER */
 footer{
   -webkit-box-shadow: 0px -6px 0px 0px rgba(105,178,255,1);
   -moz-box-shadow: 0px -6px 0px 0px rgba(105,178,255,1);
   box-shadow: 0px -6px 0px 0px rgba(105,178,255,1);
 }
-
 .contacts p{
   margin: 7px 0 !important;
 }
-
 .social-list a{
   display: inline-block;
   margin-right: 20px;
   font-size: 30px !important;
   color: white;
 }
-
 .social-list a:hover{
   color: rgb(72, 160, 255);
   transform: scale(1.3);
   transition: ease-in-out 0.3s;
 }
+
 
 @media screen and (max-width: 1300px){
   .brand-logo{
@@ -178,6 +250,10 @@ footer{
 
   .dashboard{
     padding-top: 56px;
+  }
+
+  .login-form{
+    width: 90% !important;
   }
 
 }

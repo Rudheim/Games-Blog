@@ -1,4 +1,4 @@
-import React, { useEffect, useLayoutEffect, useState } from 'react';
+import React, { useEffect, useState } from 'react';
 
 const Newsfeed = () => {
 
@@ -9,13 +9,13 @@ const Newsfeed = () => {
     window.addEventListener('resize', () => {
       window.innerWidth < 750 ? setBrowserSize('') : setBrowserSize('horizontal');
     });
-  })
+  }, [])
 
   return (
     <>
     <div className={`card ${browserSize}`}>
       <div className="card-image">
-        <img src="https://materializecss.com/images/sample-1.jpg" />
+        <img src="https://materializecss.com/images/sample-1.jpg" alt='Главная новость'/>
       </div>
       <div className="card-stacked">
         <div className="card-content">
@@ -38,7 +38,7 @@ const Newsfeed = () => {
 
     <div className={`card ${browserSize}`}>
       <div className="card-image">
-        <img src="https://materializecss.com/images/sample-1.jpg" />
+        <img src="https://materializecss.com/images/sample-1.jpg" alt='Главная новость' />
       </div>
       <div className="card-stacked">
         <div className="card-content">
@@ -61,7 +61,7 @@ const Newsfeed = () => {
     
     <div className={`card ${browserSize}`}>
       <div className="card-image">
-        <img src="https://materializecss.com/images/sample-1.jpg" />
+        <img src="https://materializecss.com/images/sample-1.jpg" alt='Главная новость' />
       </div>
       <div className="card-stacked">
         <div className="card-content">

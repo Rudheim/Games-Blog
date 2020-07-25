@@ -15,12 +15,12 @@ const Footer = () => {
           <div className="col l4 m6 offset-l2 s12">
             <h5 className="white-text">Мы в социальных сетях:</h5>
             <ul className="social-list">
-             <a href=""><i class="fab fa-twitter-square"></i></a>
-             <a href=""><i class="fab fa-facebook-square"></i></a>
-             <a href=""><i class="fab fa-telegram-plane"></i></a>
-             <a href=""><i class="fab fa-viber"></i></a>
-             <a href=""><i class="fab fa-instagram"></i></a>
-             <a href=""><i class="fab fa-whatsapp"></i></a>
+             <a href="www.twitter.com"><i className="fab fa-twitter-square"></i></a>
+             <a href="www.facebook.com"><i className="fab fa-facebook-square"></i></a>
+             <a href="www.telegram.com"><i className="fab fa-telegram-plane"></i></a>
+             <a href="www.viber.com"><i className="fab fa-viber"></i></a>
+             <a href="www.instagram.com"><i className="fab fa-instagram"></i></a>
+             <a href="www.whatsapp.com"><i className="fab fa-whatsapp"></i></a>
             </ul>
           </div>
         </div>
