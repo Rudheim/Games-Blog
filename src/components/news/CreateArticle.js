@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import {app} from '../config/FireBaseConfig'
 
 const db = app.firestore();
@@ -11,11 +11,13 @@ const CreateArticle = () => {
     file: '',
     url: ''
   });
+  const [photo, setPhoto] = useState();
 
   const onArticleChange = (e) =>{
     setNewArticle({
       ...newArticle,
-      [e.target.id]: e.target.value
+      [e.target.id]: e.target.value,
+      date: new Date()
     })
   }
 
@@ -25,17 +27,29 @@ const CreateArticle = () => {
       url: URL.createObjectURL(e.target.files[0])})
   }
 
+  const addPhoto = (e) => {
+    setPhoto(e.target.files[0])
+  }
+
+  useEffect(() => {
+    if(photo){
+      storage.ref().child(photo.name).put(photo)
+        .then(snapshot => {
+          snapshot.ref.getDownloadURL()
+        .then(url => {
+          document.querySelector('#img_link').textContent = `<img src="${url}" />`})})
+    }
+  }, [photo])
+
   const handleSubmit = async (e) => {
     try{
       e.preventDefault();
 
-      const storageRef = storage.ref();
-      const fileRef = storageRef.child(titlePhoto.file.name);
-      await fileRef.put(titlePhoto.file)
+      await storage.ref().child(titlePhoto.file.name).put(titlePhoto.file)
 
       db.collection("articles").doc().set({
         ...newArticle,
-        title_photo_url: await fileRef.getDownloadURL()
+        title_photo_url: await storage.ref().child(titlePhoto.file.name).getDownloadURL()
       })
       .then(() => {
         console.log('Новая статья добавлена')
@@ -53,18 +67,34 @@ const CreateArticle = () => {
         <div className=" file-field input-field">
           <div className="btn-small">
             <span>Фото в заглавие</span>
-            <input type="file" className="" onChange={onFileChange} />
+            <input type="file" onChange={onFileChange} />
           </div>
           <div className="file-path-wrapper">
             <input className="file-path validate" type="text" />
           </div>
           <img src={titlePhoto.url} alt=""/>
         </div>
+
+        <div className=" file-field input-field">
+          <div className="btn-small">
+            <span>Добавить фото</span>
+            <input type="file" onChange={addPhoto} />
+          </div>
+          <div className="file-path-wrapper">
+            <input className="file-path validate" type="text" />
+          </div>
+        </div>
+        <p>Ссылка на изображение</p>
+          <span id="img_link" className="black-text"></span>
       </div>
       <div className="col s12 m8">
         <div className="input-field">
           <textarea id="title" onChange={onArticleChange} className="materialize-textarea" />
           <label  htmlFor="title">Заглавие</label>
+        </div>
+        <div className="input-field">
+          <textarea id="author" onChange={onArticleChange} className="materialize-textarea" />
+          <label  htmlFor="author">Имя автора</label>
         </div>
         <div className="input-field">
           <textarea id="first_para" onChange={onArticleChange} className="materialize-textarea" />
