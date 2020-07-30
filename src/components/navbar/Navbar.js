@@ -8,13 +8,9 @@ import {NavLink, Link} from 'react-router-dom'
  const Navbar = () => {
 
   useEffect(() => {
-
-    var sidenav = document.querySelectorAll('.sidenav');
-    M.Sidenav.init(sidenav);
-
-    var collapsible = document.querySelectorAll('.collapsible');
-    M.Collapsible.init(collapsible);
-  })
+    M.Sidenav.init(document.querySelectorAll('.sidenav'));
+    M.Collapsible.init(document.querySelectorAll('.collapsible'));
+  }, [])
 
    return (
      <header>

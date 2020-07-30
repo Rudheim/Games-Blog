@@ -9,6 +9,7 @@ import CreateArticle from './components/news/CreateArticle';
 import ArticleDetails from './components/news/ArticleDetails';
 import Categories from './components/dashboard/Categories'
 import AdminPanel from './components/dashboard/AdminPanel'
+import ArticleProvider from './context/ArticlesContext';
 
 
 function App() {
@@ -16,19 +17,21 @@ function App() {
   return (
     <>
       <BrowserRouter>
-        <Navbar />
-        <main className="container dashboard row">
-          <Switch>
-            <Route exact path='/' component={HomePage} />
-            <Route path='/signup' component={SignUp} />
-            <Route path='/signin' component={SignIn} />
-            <Route path='/createarticle' component={CreateArticle} />
-            <Route path='/:article_id' component={ArticleDetails} />
-          </Switch>
-          <Categories />
-          <AdminPanel />
-        </main>
+        <ArticleProvider>
+          <Navbar />
+          <main className="container dashboard row">
+            <Switch>
+              <Route exact path="/" component={HomePage} />
+              <Route exact path="/signup" component={SignUp} />
+              <Route exact path="/signin" component={SignIn} />
+              <Route exact path="/createarticle" component={CreateArticle} />
+              <Route exact path="/articles/:article_id" component={ArticleDetails} />
+            </Switch>
+            <Categories />
+            <AdminPanel />
+          </main>
         <Footer />
+        </ArticleProvider>
       </BrowserRouter>
    </>
   );

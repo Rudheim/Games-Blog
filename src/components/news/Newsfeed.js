@@ -3,38 +3,37 @@ import {Link} from 'react-router-dom';
 import { formatISO9075 } from 'date-fns';
 
 
-const Newsfeed = ({article}) => {
+const Newsfeed = ({props}) => {
 
-  const [browserSize, setBrowserSize] = useState('horizontal')
+  const [article, setArticle] = useState({})
 
   useEffect(() => {
-    window.innerWidth < 750 ? setBrowserSize('') : setBrowserSize('horizontal');
-    window.addEventListener('resize', () => {
-      window.innerWidth < 750 ? setBrowserSize('') : setBrowserSize('horizontal');
-    });
-  }, [])
+    setArticle({...props, date: formatISO9075(props.date.toDate())})
+  }, [props])
+
 
   return (
-    <div className={`card ${browserSize}`}>
+   <div className="card horizontal">
       <div className="card-image">
         <img src={article.title_photo_url} alt='Главная новость'/>
       </div>
       <div className="card-stacked">
         <div className="card-content">
-          <h5>{article.title}</h5>
+          <Link to={{ pathname:'/articles/' + article.id,
+                      state: article}}>
+          <h6>{article.title}</h6></Link>
           <p className="grey-text">Автор: {article.author}</p>
           <p>{article.first_para}</p>
         </div>
         <div className="card-action">
           <div className="row">
             <div className="col s6 time">
-              <span><i className="material-icons left">access_time</i>{formatISO9075(article.date.toDate())}</span>
+              <span><i className="material-icons left">access_time</i>{article.date}</span>
             </div>
             <div className="col s6 right-align read">
-              <Link to={
-              { pathname:'/' + article.id,
-                state: {article}}
-              }><i className="material-icons right">sort</i>Читать далее</Link>
+              <Link to={{ pathname:'/articles/' + article.id,
+                          state: article}}>
+              <i className="material-icons right">sort</i>Читать далее</Link>
             </div>
           </div>
         </div>

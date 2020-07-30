@@ -1,12 +1,14 @@
-import React from 'react';
+import React, { useContext } from 'react';
 import { Link, useLocation } from 'react-router-dom';
+import { ArticleContext } from '../../context/ArticlesContext';
 
 const Categories = () => {
 
   let location = useLocation().pathname;
+  const {data} = useContext(ArticleContext)
 
   return (
-    location !== '/signin' && location !== '/createarticle' && location !== '/signup' && (
+    !!data.length && location !== '/signin' && location !== '/createarticle' && location !== '/signup' && (
       <div className="col l3 hide-on-med-and-down">
         <div className="categories">
           <div className="collection">
