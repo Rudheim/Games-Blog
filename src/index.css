@@ -332,9 +332,27 @@ footer, .footer-copyright{
     width: 90% !important;
   }
 
-  .time span{
-    font-size: 0.9rem !important;
+
+  .card{
+    line-height: 1.2 !important;
   }
+
+  .card .card-image,
+  .card.horizontal .card-image{
+    max-height: 150px;
+  }
+
+  .card-action .row{
+    margin-bottom: 0;
+  }
+  
+  .time i, .read i{
+    font-size: 1.2rem !important;
+  }
+  .time span, .read span{
+    font-size: 0.8rem !important;
+  }
+
 
   .dashboard{
     margin-top: 10px !important;
