@@ -10,7 +10,8 @@ import ArticleList from './ArticlesList';
 
   useEffect(() => {
       document.querySelector('#main_text').innerHTML = new DOMParser().parseFromString(article.main_text, "text/html").body.innerHTML
-  })
+      window.scrollTo(0, 0);
+  }, [article.main_text])
 
     return (
       <div className="col s12 l9 article-details">

@@ -1,11 +1,14 @@
-import React, {useEffect} from 'react';
+import React, {useEffect, useContext} from 'react';
 import M from "materialize-css";
 import SignedOutLinks from './SignedOutLinks';
 import SignedInLinks from './SignedInLinks';
 import {NavLink, Link} from 'react-router-dom'
+import { UserContext } from '../../context/UserContext';
 
 
  const Navbar = () => {
+
+  const {user} = useContext(UserContext);
 
   useEffect(() => {
     M.Sidenav.init(document.querySelectorAll('.sidenav'));
@@ -25,8 +28,7 @@ import {NavLink, Link} from 'react-router-dom'
             <li><NavLink to='/'>О нас</NavLink></li>
             <li><NavLink to='/'>Контакты</NavLink></li>
             <li className="nav-divider"></li>
-            <SignedOutLinks />
-            <SignedInLinks />
+            {user.logged ? <SignedInLinks /> : <SignedOutLinks />}
           </ul>
         </div>
         <ul className="sidenav" id="mobile_menu">
@@ -52,8 +54,7 @@ import {NavLink, Link} from 'react-router-dom'
             <li><NavLink to='/'>Видео</NavLink></li>
             <li><NavLink to='/'>О нас</NavLink></li>
             <li><NavLink to='/'>Контакты</NavLink></li>
-            <SignedOutLinks />
-            <SignedInLinks />
+            {user.logged ? <SignedOutLinks /> : <SignedInLinks />}
           </ul>
       </nav>
       </header>

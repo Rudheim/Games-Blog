@@ -1,26 +1,12 @@
-import React, { useEffect, useContext } from 'react';
+import React, { useContext } from 'react';
 import LatestArticle from '../news/LatestArticle'
 import Newsfeed from '../news/Newsfeed';
-import {app} from '../config/FireBaseConfig'
 import { ArticleContext } from '../../context/ArticlesContext';
-
-const db = app.firestore();
 
 const HomePage = () => {
 
-  const {data, setData} = useContext(ArticleContext);
-  
-  useEffect(() => {
-    console.log('request!')
-    db.collection("articles").orderBy("date", "desc").get()
-      .then(snapshot =>{
-        const tempArticles = [];
-        snapshot.docs.forEach(doc => tempArticles.push({...doc.data(), id: doc.id}))
-        setData(tempArticles)
-    }).catch(err => {
-        console.log(err.message)})
-  }, [setData])
-  
+  const {data} = useContext(ArticleContext);
+
   return (
     data.length ? (
       <div className="col s12 l9">

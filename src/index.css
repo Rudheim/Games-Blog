@@ -60,6 +60,14 @@ nav li a, nav li span{
   color: #212121 !important;
 }
 
+.sign-in-links li:nth-child(1){
+  padding: 0 15px;
+  background-color: rgb(255, 255, 255) !important;
+  -webkit-box-shadow: inset 0px -8px 0px -2px rgb(187, 187, 187);
+  -moz-box-shadow: inset 0px -8px 0px -2px rgb(187, 187, 187);
+  box-shadow: inset 0px -8px 0px -2px rgb(187, 187, 187);
+}
+
 .sign-in-links{
  border-left: 1px solid !important;
 }
@@ -331,7 +339,6 @@ footer, .footer-copyright{
   .login-form{
     width: 90% !important;
   }
-
 
   .card{
     line-height: 1.2 !important;
