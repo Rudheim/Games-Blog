@@ -1,4 +1,5 @@
 import React from 'react';
+import logo from './dotNetHeimLogo.png'
 
 const Footer = () => {
   return (
@@ -26,8 +27,8 @@ const Footer = () => {
         </div>
       </div>
       <div className="footer-copyright black">
-        <div className="container center">
-          &copy; 2020 .netHeim
+        <div className="container center ">
+          <img src={logo} alt='dotNetHeim' className="myLogo"/><span>&copy; 2020 .netHeim</span>
         </div>
       </div>
     </footer>);

@@ -1,6 +1,5 @@
 import React, { useEffect, useState } from 'react';
 import {Link} from 'react-router-dom';
-import { formatISO9075 } from 'date-fns';
 
 
 const Newsfeed = ({props}) => {
@@ -8,7 +7,7 @@ const Newsfeed = ({props}) => {
   const [article, setArticle] = useState({})
 
   useEffect(() => {
-    setArticle({...props, date: formatISO9075(props.date.toDate())})
+    setArticle(props)
   }, [props])
 
 

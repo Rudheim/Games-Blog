@@ -1,5 +1,4 @@
 import React, { useEffect, useState } from 'react';
-import { formatISO9075 } from 'date-fns';
 import { Link } from 'react-router-dom';
 
 const ArticleList = ({props}) => {
@@ -7,7 +6,7 @@ const ArticleList = ({props}) => {
   const [article, setArticle] = useState({})
 
   useEffect(() => {
-    setArticle({...props, date: formatISO9075(props.date.toDate())})
+    setArticle(props)
   }, [props])
 
   return (

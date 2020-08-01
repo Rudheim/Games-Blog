@@ -312,7 +312,11 @@ footer, .footer-copyright{
 .footer-copyright{
   min-height: 30px !important;
 }
-
+.myLogo{
+  max-height: 17px;
+  position: absolute;
+  margin: 2px -25px;
+}
 
 @media screen and (max-width: 1300px){
   .brand-logo{

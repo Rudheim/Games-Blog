@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import {app} from '../config/FireBaseConfig';
 import M from 'materialize-css';
+import { formatISO9075 } from 'date-fns';
 
 const db = app.firestore();
 const storage = app.storage();
@@ -18,7 +19,7 @@ const CreateArticle = () => {
     setNewArticle({
       ...newArticle,
       [e.target.id]: e.target.value,
-      date: new Date()
+      date: formatISO9075(new Date())
     })
   }
 
