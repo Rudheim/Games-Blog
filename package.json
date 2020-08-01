@@ -8,6 +8,7 @@
     "@testing-library/user-event": "^7.2.1",
     "date-fns": "^2.15.0",
     "firebase": "^7.17.1",
+    "jodit-react": "^1.0.53",
     "materialize-css": "^1.0.0-rc.2",
     "react": "^16.13.1",
     "react-dom": "^16.13.1",

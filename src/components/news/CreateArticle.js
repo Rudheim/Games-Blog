@@ -2,6 +2,7 @@ import React, { useState, useEffect } from 'react';
 import {app} from '../config/FireBaseConfig';
 import M from 'materialize-css';
 import { formatISO9075 } from 'date-fns';
+import JoditEditor from "jodit-react";
 
 const db = app.firestore();
 const storage = app.storage();
@@ -14,11 +15,28 @@ const CreateArticle = () => {
     url: ''
   });
   const [photo, setPhoto] = useState();
+	const [content, setContent] = useState('')
+	
+	const config = {
+    readonly: false,
+    language: "ru",
+    allowResizeY: false,
+    toolbarAdaptive: false,
+    showCharsCounter: false,
+    showWordsCounter: false,
+    showXPathInStatusbar: false,
+    askBeforePasteHTML: false,
+    askBeforePasteFromWord: false,
+    height: 600,
+    toolbarSticky: false,
+    buttons: "bold,strikethrough,underline,italic,eraser,ul,ol,outdent,indent,font,fontsize,brush,paragraph,,video,image,,table,link,|,align,undo,redo,\n,selectall,copy,paste,,hr"
+	}
 
   const onArticleChange = (e) =>{
     setNewArticle({
       ...newArticle,
       [e.target.id]: e.target.value,
+      main_text: content,
       date: formatISO9075(new Date())
     })
   }
@@ -39,7 +57,7 @@ const CreateArticle = () => {
         .then(snapshot => {
           snapshot.ref.getDownloadURL()
         .then(url => {
-          document.querySelector('#img_link').textContent = `<img src="${url}" />`})})
+          document.querySelector('#img_link').textContent = url})})
     }
   }, [photo])
 
@@ -108,8 +126,16 @@ const CreateArticle = () => {
         </div>
 
         <div className="input-field">
-          <textarea id="author" onChange={onArticleChange} className="materialize-textarea" />
-          <label  htmlFor="author">Имя автора</label>
+          <textarea id="first_para" onChange={onArticleChange} className="materialize-textarea" data-length="330" />
+          <label  htmlFor="first_para">Первый параграф (Будет отображаться в новостной ленте)</label>
+        </div>
+
+        <div className="container">
+          <JoditEditor
+                value={content}
+                config={config}
+                onBlur={newContent => setContent(newContent)}
+                onChange={newContent => {}}/>
         </div>
 
         <div className="input-field">
@@ -122,13 +148,8 @@ const CreateArticle = () => {
         </div>
 
         <div className="input-field">
-          <textarea id="first_para" onChange={onArticleChange} className="materialize-textarea" data-length="330" />
-          <label  htmlFor="first_para">Первый параграф (Будет отображаться в новостной ленте)</label>
-        </div>
-
-        <div className="input-field">
-          <textarea id="main_text" onChange={onArticleChange} className="materialize-textarea" />
-          <label  htmlFor="main_text">Основной текст</label>
+          <textarea id="author" onChange={onArticleChange} className="materialize-textarea" />
+          <label  htmlFor="author">Имя автора</label>
         </div>
 
         <div className="input-field center">
