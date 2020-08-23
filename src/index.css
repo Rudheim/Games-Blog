@@ -1,85 +1,91 @@
+/* Importing font for the logo */
 @font-face{
   font-family: "RonduitCapitals-Light";
   src: url(./fonts/RonduitCapitals.otf);
 }
 
+/* Making sticky footer */
 #root {
   display: flex;
   min-height: 100vh;
   flex-direction: column;
+  background: url(./components/assets/bg.jpg) no-repeat; 
+  background-size: cover;
+  background-attachment: fixed;
 }
-
 main {
   flex: 1 0 auto;
+  /* background: rgb(255, 255, 255); */
 }
 
+/* Making youtube video responsive */
+[data-jodit_iframe_wrapper]:after {
+  content: none !important;
+}
+
+/* Loading animation */
 .preloader-wrapper.big {
   width: 160px !important;
   height: 160px !important;
   margin-top: 10%;
 }
 
-/* MAKING CONTAINER A LITTLE BIT WIDER */
+/* Windenning a container class */
 .container{
   width: 100% !important;
 }
 
+/* Pointer for side navicon */
 .sidenav-trigger{
   cursor: pointer;
 }
 
-/* FIXING SIDENAV LAYER */
+/* Fixing sidenav layer */
 .sidenav-overlay{
   z-index: 0 !important;
 }
 
 /* NAVBAR */
+/* Sticky nav bar */
 nav{
   position: fixed;
   z-index: 1;
 }
-
-nav ul{
-  display: flex !important;
-}
-
-.nav-divider{
-  border-left: 1px solid rgb(204, 204, 204);
-  margin-right: 15px;
-}
-
-/* APPLYING SPECIAL FONT FOR THE LOGO */
+/* Applying special font for the logo */
 nav .brand-logo{
   font-family: "RonduitCapitals-Light";
   font-weight: bold;
   margin-left: 10px;
 }
-
-/* TEXT COLOR OF THE NAV ELEMENTS */
+/* Aligning nav buttons */
+nav ul{
+  display: flex !important;
+}
+/* Text color of nav buttons */
 nav li a, nav li span{
   color: #212121 !important;
 }
-
-.sign-in-links li:nth-child(1){
+/* Styling for nav divider */
+.nav-divider{
+  border-left: 1px solid rgb(204, 204, 204);
+  margin-right: 15px;
+}
+/* Giving border color to the logged user button */
+/* .sign-in-links li:nth-child(1){
   padding: 0 15px;
   background-color: rgb(255, 255, 255) !important;
   -webkit-box-shadow: inset 0px -8px 0px -2px rgb(187, 187, 187);
   -moz-box-shadow: inset 0px -8px 0px -2px rgb(187, 187, 187);
   box-shadow: inset 0px -8px 0px -2px rgb(187, 187, 187);
-}
-
-.sign-in-links{
- border-left: 1px solid !important;
-}
-
-/* ADDING SHADOW ON HOVER FOR NAV ELEMENTS */
+} */
+/* Giving border color to the menu links buttons */
 nav li a:hover{
-  background-color: rgb(255, 255, 255) !important;
+  /* background-color: rgb(255, 255, 255) !important; */
   -webkit-box-shadow: inset 0px -8px 0px -2px rgb(82, 146, 255);
   -moz-box-shadow: inset 0px -8px 0px -2px rgb(82, 146, 255);
   box-shadow: inset 0px -8px 0px -2px rgb(82, 146, 255);
 }
-
+/* Giving border color to the selected links buttons */
 .selected-nav{
   background-color: rgb(255, 255, 255) !important;
   -webkit-box-shadow: inset 0px -8px 0px -2px rgb(82, 146, 255);
@@ -87,69 +93,129 @@ nav li a:hover{
   box-shadow: inset 0px -8px 0px -2px rgb(82, 146, 255);
 }
 
-/* LOWERING CONTENT UNDER THE FIXED NAV */
+/* DASHBOARD */
+/* Lowering all content under the fixed nav */
 .dashboard{
   padding-top: 64px;
   margin-top: 20px !important;
 }
 
-/* FIXED CATEGORIES MENU */
+/* Sticky categories menu */
+.categories{
+  background: #37474f ;
+  width: 300px;
+}
 .categories,
 .admin-panel{
   position: fixed;
 }
-
+/* Removing all borders */
 .categories .collection,
 .admin-panel .collection
 {
   overflow: visible;
   border: none;
 }
-.categories .material-icons{
-  line-height: 20px !important;
+.admin-panel{
+  margin-top: 400px;
 }
+.admin-panel .collection a{
+  background: transparent;
+}
+/* Aligning icons and badges*/
+.categories .material-icons,
 span.badge{
   line-height: 20px !important;
 }
-/* text-color */
+/* Text-color */
+.categories h6{
+  margin: 10px 10px;
+  padding: 10px 10px;
+  border-bottom: solid 1px white;
+  font-weight: bold;
+}
 .categories a{
   color: black !important;
   border: none !important;
+  background: #37474f  !important;
+  color: white !important;
+  width: fit-content;
 }
+/* Animation on hover */
 .categories a:hover{
-  background-color: white !important;
+  background-color: #37474f !important;
   transform: translateX(10px);
   -webkit-box-shadow: inset 9px -2px 0px -2px rgba(48,124,255,1);
   -moz-box-shadow: inset 9px -2px 0px -2px rgba(48,124,255,1);
   box-shadow: inset 9px -2px 0px -2px rgba(48,124,255,1);
 }
 
+.carousel{
+  height: 400px !important;
+  border-radius: 3px;
+  margin-bottom: 20px;
+  -webkit-box-shadow: 3px 3px 5px -2px rgba(0,0,0,0.75);
+  -moz-box-shadow: 3px 3px 5px -2px rgba(0,0,0,0.75);
+  box-shadow: 3px 3px 5px -2px rgba(0,0,0,0.75);
+  display: flex !important;
+}
+.carousel-item{
+  display: flex;
+  align-items: flex-end;
+}
+
+.carousel-item:hover img{
+  transform: scale(1.1);
+  transition-duration: .5s;
+}
+
+.carousel img{
+  object-fit: cover;
+  height: 100%;
+  display: flex;
+  position: absolute;
+  transition-duration: .5s;
+}
+
+.carousel .news-info{
+  background-color: #212121de;
+  height: 50px;
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  position: absolute;
+  padding: 3px 10px;
+}
+
 /* CARDS */
-/* MARGIN BETWEEN CARDS */
+/* Margin beetwen cads */
 .card{
   margin-bottom: 20px !important;
 }
-/* HEADER */
+/* Article title */
 .card-content h6{
   margin: 0 0 5px 5px !important;
   font-weight: bold;
 }
+/* Removing default blue link color */
 .card-content a{
   color: inherit;
 }
+/* Adding blue color on hover */
 .card-content a:hover{
   color: rgba(48,124,255,1);
 }
-/* AUTHOR */
+/* Author */
 .card-content p:nth-child(2){
   margin-left: 10px !important;
   font-style: italic !important;
   text-align: right;
 }
-/* MOVING TEXTCONTENT LITTLEBIT TO THE RIGHT FROM THE IMG */
+/* Moving text to right from the image */
 .card-content p:nth-child(3){
   margin-left: 5px !important;
 }
+/* Making padding inside the card smaller */
 .card-content{
   padding: 5px !important;
 }
@@ -195,9 +261,81 @@ span.badge{
 }
 .card-image img{
   width: 100% !important;
-  height: 100%;
+  height: 100% !important;
   object-fit:cover;
 }
+
+.page{
+  margin-top: 10px;
+  display: flex;
+  position: relative;
+  /* top: 50%;
+  left: 50%; */
+  /* transform: translate(-50%, -50%); */
+  justify-content: space-evenly;
+}
+
+.next-btn{
+  align-self: flex-end;
+}
+
+.prev-btn{
+  align-self: flex-start;
+}
+
+.page button{
+  display: block;
+  width: 100px;
+  height: 40px;
+  font-family: sans-serif;
+  color: #333;
+  border: 1px solid rgb(54, 64, 73);
+  letter-spacing: 2px;
+  text-align: center;
+  position: relative;
+  transition: all .35s;
+  cursor: pointer;
+}
+
+.page button span{
+  position: relative;
+  z-index: 2;
+}
+
+.next-btn:after{
+  position: absolute;
+  content: "";
+  top: 0;
+  left: 0;
+  width: 0;
+  height: 100%;
+  background: rgba(48,124,255,1);
+  transition: all .35s;
+}
+
+.prev-btn:after{
+  position: absolute;
+  content: "";
+  top: 0;
+  right: 0;
+  width: 0;
+  height: 100%;
+  background: rgba(48,124,255,1);
+  transition: all .35s;
+}
+
+.page button:hover{
+  color: #fff;
+}
+
+.page button:hover:after{
+  width: 100%;
+}
+
+.page button:focus{
+  background-color: transparent;
+}
+
 
 /* STYLING FORMS */
 .login-form{
@@ -213,6 +351,7 @@ span.badge{
 .login-form button{
   margin-top: 20px;
 }
+
 /* ------INPUT FILEDS------ */
 /* label underline focus color */
 input[type=text]:not(.browser-default):focus:not([readonly]),
@@ -242,7 +381,12 @@ input[type=password]:not(.browser-default).validate+label{
   width: 70% !important;
 }
 
-/* title img positioning and styling */
+/* CREATE ARTICLE PAGE */
+/* Removing file name field */
+.file-field .file-path-wrapper{
+  width: 0 !important;
+}
+/* Title img positioning and styling */
 .title-img-container{
   display: grid;
   overflow: hidden;
@@ -253,17 +397,22 @@ input[type=password]:not(.browser-default).validate+label{
   border-radius: 5px;
   margin-bottom: 40px;
 }
+/* Centering img inside container */
 .title-img-container img{
   position: relative;
   width: 100%;
-  top: -30%;
+}
+.add-photo{
+  position: fixed !important;
+  margin-top: 15% !important;
 }
 
-#img_link{
-  cursor: text !important;
+/* ARTICLE PAGE */
+.article-details{
+    -webkit-box-shadow: 3px 0px 0px -1px rgba(89,183,255,0.53);
+  -moz-box-shadow: 3px 0px 0px -1px rgba(89,183,255,0.53);
+  box-shadow: 3px 0px 0px -1px rgba(89,183,255,0.53);
 }
-
-/* Article Page */
 .article-details h5{
   font-weight: bold;
 }
@@ -274,10 +423,45 @@ input[type=password]:not(.browser-default).validate+label{
 .article-details .article-info{
 margin-bottom: 10px !important;
 }
+
 .article-details img{
-  width: 100%;
+  display: flex;
+  margin: 0 auto;
+  width: fit-content;
+  max-width: 100%;
   border-radius: 3px;
 }
+
+.title-photo{
+  width: 100% !important;
+}
+
+iframe{
+  position: relative !important;
+  display: flex !important;
+  width: 100% !important;
+}
+
+.news-list{
+  list-style-type: disc !important;
+  margin-left: 20px;
+}
+.news-list li:hover{
+  transform: translateX(10px);
+  transition: ease;
+  transition-duration: 0.5s;
+}
+
+.edit_icon{
+  position: absolute !important;
+  z-index: 3;
+  margin: 5px
+}
+.edit_icon:hover{
+  background-color: red !important;
+  transform: scale(1.2);
+}
+
 
 .forever-hidden{
   display: none !important;
@@ -315,7 +499,7 @@ footer, .footer-copyright{
 .myLogo{
   max-height: 17px;
   position: absolute;
-  margin: 2px -25px;
+  margin: 3px -25px;
 }
 
 @media screen and (max-width: 1300px){
@@ -331,6 +515,23 @@ footer, .footer-copyright{
   .card.horizontal .card-image{
     max-height: 250px;
     max-width: none !important;
+  }
+
+  .carousel{
+    height: 200px !important;
+  }
+
+  .carousel .carousel-item{
+    align-items : flex-start;
+  }
+
+  .carousel .news-info{
+    height: 75px;
+    justify-content: center;
+  }
+
+  .carousel h6{
+    margin: 0;
   }
 }
 
@@ -364,9 +565,7 @@ footer, .footer-copyright{
     font-size: 0.8rem !important;
   }
 
-
   .dashboard{
     margin-top: 10px !important;
   }
-
 }

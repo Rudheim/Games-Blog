@@ -6,8 +6,9 @@ const auth = app.auth();
 
 const SignIn = () => {
 
-  const [userDet, setUserDet] = useState({})
   let history = useHistory();
+
+  const [userDet, setUserDet] = useState({});
 
   const handleChange= (e) =>{
     setUserDet({

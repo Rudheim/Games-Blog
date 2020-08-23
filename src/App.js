@@ -2,10 +2,10 @@ import React from 'react';
 import Navbar from './components/navbar/Navbar'
 import HomePage from './components/dashboard/HomePage';
 import Footer from './components/footer/Footer';
-import {BrowserRouter, Route, Switch} from 'react-router-dom'
+import {Route, Switch, BrowserRouter} from 'react-router-dom'
 import SignIn from './components/auth/SignIn';
 import SignUp from './components/auth/SignUp';
-import CreateArticle from './components/news/CreateArticle';
+import CreateArticle from './components/admin/CreateArticle';
 import ArticleDetails from './components/news/ArticleDetails';
 import Categories from './components/dashboard/Categories'
 import AdminPanel from './components/dashboard/AdminPanel'

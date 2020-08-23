@@ -4,11 +4,13 @@ import SignedOutLinks from './SignedOutLinks';
 import SignedInLinks from './SignedInLinks';
 import {NavLink, Link} from 'react-router-dom'
 import { UserContext } from '../../context/UserContext';
+import { ArticleContext } from '../../context/ArticlesContext';
 
 
  const Navbar = () => {
 
   const {user} = useContext(UserContext);
+  const {loadHome} = useContext(ArticleContext);
 
   useEffect(() => {
     M.Sidenav.init(document.querySelectorAll('.sidenav'));
@@ -20,14 +22,14 @@ import { UserContext } from '../../context/UserContext';
       <nav className="white">
         <span data-target="mobile_menu" className="sidenav-trigger grey-text text-darken-4 right hide-on-large-only"><i className="material-icons">menu</i></span>
         <div className="nav-wrapper container ">
-          <Link to='/' className="brand-logo left grey-text text-darken-4" >Блеф</Link>
+          <Link to='/' onClick={loadHome} className="brand-logo left black-text" >Gamer Blog</Link>
           <ul className="right hide-on-med-and-down">
-            <li><NavLink exact to='/' activeClassName="selected-nav">Новости</NavLink></li>
-            <li><NavLink to='/'>Фото</NavLink></li>
-            <li><NavLink to='/'>Видео</NavLink></li>
+            {/* <li><NavLink exact to='/' activeClassName="selected-nav">Новости</NavLink></li>
             <li><NavLink to='/'>О нас</NavLink></li>
-            <li><NavLink to='/'>Контакты</NavLink></li>
-            <li className="nav-divider"></li>
+            <li><NavLink to='/'>Спецтеми</NavLink></li>
+            <li><NavLink to='/'>Інтерв'ю</NavLink></li>
+            <li><NavLink to='/'>Блоги</NavLink></li> */}
+            {/* <li className="nav-divider"></li> */}
             {user.logged ? <SignedInLinks /> : <SignedOutLinks />}
           </ul>
         </div>

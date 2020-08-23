@@ -11,10 +11,12 @@ const ArticleList = ({props}) => {
 
   return (
     <div>
+      <li>
         <Link to={{
           pathname:'/articles/' + article.id,
           state: article}}>
         {article.title}</Link>
+      </li>
     </div>
   );
 }

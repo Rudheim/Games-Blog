@@ -1,10 +1,12 @@
-import React, { useEffect, useState} from 'react';
+import React, { useEffect, useState, useContext} from 'react';
 import { Link } from 'react-router-dom';
+import { UserContext } from '../../context/UserContext';
 
 
 const LatestNews = ({props}) => {
 
-  const [article, setArticle] = useState({})
+  const [article, setArticle] = useState({});
+  const {user} = useContext(UserContext);
 
   useEffect(() => {
     setArticle(props)
@@ -14,6 +16,7 @@ const LatestNews = ({props}) => {
   return (
       <div className="card main-article">
           <div className="card-image">
+          {user.uid === 'RSZ5V4eKdXfPyy8YpDH3GS5yj5M2' && <Link to="/create-article" className="edit_icon btn-floating btn-small waves-effect waves-light blue"><i className="material-icons">edit</i></Link>}
             <img src={article.title_photo_url} alt='Главная новость' />
           </div>
           <div className="card-stacked">
