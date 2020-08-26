@@ -1,9 +1,17 @@
 import React, { useState } from 'react';
 import {app} from '../config/FireBaseConfig';
 import { useHistory } from "react-router-dom";
+import { motion } from 'framer-motion';
 
 const auth = app.auth();
 const db = app.firestore();
+
+const cardVariants={
+  hidden: { x: 1000, scale: 0 },
+  visible: {  x: 0, scale: 1 , originY: 0, transition:{ duration: .5}},
+  exit: { rotateY: 90, originZ: 0, transition:{ duration: .5}}
+}
+
 
 const SignUp = () => {
 
@@ -31,7 +39,7 @@ const SignUp = () => {
   }
 
   return ( 
-    <form className="container login-form" onSubmit={handleSubmit}>
+    <motion.form variants={cardVariants} initial='hidden' animate='visible' className="container login-form" onSubmit={handleSubmit}>
       <div className="center-align">
       <i className="material-icons large">assignment</i>
       <h4>Регистрация нового пользователя</h4>
@@ -56,7 +64,7 @@ const SignUp = () => {
       <div className="input-field center">
         <button type="submit" className="btn waves-effect waves-light blue"><i className="material-icons right">done</i>Зарегистрироваться</button>
       </div>
-    </form>
+    </motion.form>
    );
 }
  

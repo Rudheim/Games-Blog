@@ -12,7 +12,7 @@ const SignedInLinks = () => {
   return (
     <ul className="sign-in-links">
       <li><span>{user.email}</span></li>
-      <li onClick={() => {auth.signOut()}} ><NavLink to='/'><i className="material-icons right">exit_to_app</i>Выход</NavLink></li>
+      <li onClick={() => {auth.signOut()}} className="sidenav-close" ><NavLink to='/'><i className="material-icons right">exit_to_app</i>Выход</NavLink></li>
     </ul>
   );
 }

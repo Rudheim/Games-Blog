@@ -2,7 +2,7 @@ import React from 'react';
 import Navbar from './components/navbar/Navbar'
 import HomePage from './components/dashboard/HomePage';
 import Footer from './components/footer/Footer';
-import {Route, Switch, BrowserRouter} from 'react-router-dom'
+import {Route, Switch, BrowserRouter } from 'react-router-dom'
 import SignIn from './components/auth/SignIn';
 import SignUp from './components/auth/SignUp';
 import CreateArticle from './components/admin/CreateArticle';

@@ -19,7 +19,7 @@ const Carousel = ({props}) => {
 
   return (
     <>
-      <Link to={{ pathname:'/articles/' + article.id, state: article }} className="carousel-item">
+      <Link to={{ pathname:'/articles/' + article.id, state: article}} className="carousel-item">
         <img src={article.title_photo_url} alt="news" />
         <div className="news-info">
         <h6 className="white-text">{article.title}</h6>

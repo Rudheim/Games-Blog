@@ -14,7 +14,7 @@ const Newsfeed = ({props}) => {
 
 
   return (
-   <div className="card horizontal">
+    <>
       <div className="card-image">
       {user.uid === 'RSZ5V4eKdXfPyy8YpDH3GS5yj5M2' && <Link to="/create-article" className="edit_icon btn-floating btn-small waves-effect waves-light blue"><i className="material-icons">edit</i></Link>}
         <img src={article.title_photo_url} alt='Главная новость'/>
@@ -40,7 +40,7 @@ const Newsfeed = ({props}) => {
           </div>
         </div>
       </div>
-    </div>
+    </>
   );
 }
  

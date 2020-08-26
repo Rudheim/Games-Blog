@@ -1,28 +1,26 @@
 import React, { useContext } from 'react';
-import { Link, useLocation } from 'react-router-dom';
+import { useLocation } from 'react-router-dom';
 import { ArticleContext } from '../../context/ArticlesContext';
+import { motion } from 'framer-motion';
+import CategoriyNavigation from './CategoryNavigation';
+
+const cardVariants={
+  hidden: { y: -500},
+  visible: { y: 0, transition: { delay: .5, type: 'spring', damping: 15 } } }
 
 const Categories = () => {
 
   let location = useLocation().pathname;
-  const {data, setCategory} = useContext(ArticleContext)
+  const {data} = useContext(ArticleContext)
 
   return (
     !!data.length && location !== '/signin' && location !== '/createarticle' && location !== '/signup' && (
-      <div className="col l3 hide-on-med-and-down">
+      <motion.div variants={cardVariants} initial='hidden' animate='visible' className="col l3 hide-on-med-and-down">
         <div className="categories">
         <h6 className="white-text center">Категории</h6>
-          <div className="collection">
-            <Link to="/" onClick={(e) => {setCategory(e.target.textContent)}} className="collection-item">MMO</Link>
-            <Link to="/" onClick={(e) => {setCategory(e.target.textContent)}} className="collection-item">MMORPG</Link>
-            <Link to="/" onClick={(e) => {setCategory(e.target.textContent)}} className="collection-item">Cингл</Link>
-            <Link to="/" onClick={(e) => {setCategory(e.target.textContent)}} className="collection-item">Мультиплеер</Link>
-            <Link to="/" onClick={(e) => {setCategory(e.target.textContent)}} className="collection-item">МOBA</Link>
-            <Link to="/" onClick={(e) => {setCategory(e.target.textContent)}} className="collection-item">Железо и софт</Link>
-            <Link to="/" onClick={(e) => {setCategory(e.target.textContent)}} className="collection-item">Консоли</Link>
-          </div>
+          <CategoriyNavigation />
         </div>
-      </div>
+      </motion.div>
     )
   );
 }

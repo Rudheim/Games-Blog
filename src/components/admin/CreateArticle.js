@@ -4,6 +4,7 @@ import M from 'materialize-css';
 import { formatISO9075 } from 'date-fns';
 import JoditEditor from "jodit-react";
 import { useHistory } from "react-router-dom";
+import { motion } from 'framer-motion';
 
 const db = app.firestore();
 const storage = app.storage();
@@ -22,7 +23,13 @@ const config = {
     toolbarSticky: false,
     "disablePlugins": "resizer",
     buttons: "bold,strikethrough,underline,italic,eraser,ul,ol,outdent,indent,font,fontsize,brush,paragraph,,video,image,,table,link,|,align,undo,redo,\n,selectall,copy,paste,,hr"
-	};
+  };
+  
+  const cardVariants={
+    hidden: { x: 1000, scale: 0 },
+    visible: {  x: 0, scale: 1 , originY: 0, transition:{ duration: .5}},
+    exit: { rotateY: 90, originZ: 0, transition:{ duration: .5}}
+  }
 
 const CreateArticle = () => {
 
@@ -106,7 +113,7 @@ const CreateArticle = () => {
   }
 
   return (  
-    <form className="container create-form row" onSubmit={handleSubmit}>
+    <motion.form variants={cardVariants} initial='hidden' animate='visible' className="container create-form row" onSubmit={handleSubmit}>
       <div className="col s3">
 
         <div className="file-field input-field">
@@ -184,7 +191,7 @@ const CreateArticle = () => {
         </div>
 
       </div>
-    </form>
+    </motion.form>
   );
 }
  

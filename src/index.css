@@ -15,7 +15,6 @@
 }
 main {
   flex: 1 0 auto;
-  /* background: rgb(255, 255, 255); */
 }
 
 /* Making youtube video responsive */
@@ -38,12 +37,34 @@ main {
 /* Pointer for side navicon */
 .sidenav-trigger{
   cursor: pointer;
+  margin-right: 3px !important;
 }
 
 /* Fixing sidenav layer */
 .sidenav-overlay{
   z-index: 0 !important;
 }
+
+.sidenav{
+  background: #37474f !important;
+  display: flex;
+  flex-direction: column;
+  width: 50% !important;
+}
+
+.sidenav .links{
+  padding-left: 20px;
+}
+
+.sidenav .links a{
+  padding: 0;
+  color: white !important;
+}
+.sidenav .links i,
+.sidenav .links span{
+  color: white !important;
+}
+
 
 /* NAVBAR */
 /* Sticky nav bar */
@@ -67,30 +88,25 @@ nav li a, nav li span{
 }
 /* Styling for nav divider */
 .nav-divider{
-  border-left: 1px solid rgb(204, 204, 204);
-  margin-right: 15px;
+  border-bottom: 1px solid rgb(204, 204, 204);
 }
-/* Giving border color to the logged user button */
-/* .sign-in-links li:nth-child(1){
-  padding: 0 15px;
-  background-color: rgb(255, 255, 255) !important;
-  -webkit-box-shadow: inset 0px -8px 0px -2px rgb(187, 187, 187);
-  -moz-box-shadow: inset 0px -8px 0px -2px rgb(187, 187, 187);
-  box-shadow: inset 0px -8px 0px -2px rgb(187, 187, 187);
-} */
 /* Giving border color to the menu links buttons */
-nav li a:hover{
+.nav-wrapper li a:hover{
   /* background-color: rgb(255, 255, 255) !important; */
   -webkit-box-shadow: inset 0px -8px 0px -2px rgb(82, 146, 255);
   -moz-box-shadow: inset 0px -8px 0px -2px rgb(82, 146, 255);
   box-shadow: inset 0px -8px 0px -2px rgb(82, 146, 255);
 }
 /* Giving border color to the selected links buttons */
-.selected-nav{
+.nav-wrapper .selected-nav{
   background-color: rgb(255, 255, 255) !important;
   -webkit-box-shadow: inset 0px -8px 0px -2px rgb(82, 146, 255);
   -moz-box-shadow: inset 0px -8px 0px -2px rgb(82, 146, 255);
   box-shadow: inset 0px -8px 0px -2px rgb(82, 146, 255);
+}
+/* Mobile menu */
+.links ul{
+  flex-direction: column;
 }
 
 /* DASHBOARD */
@@ -111,10 +127,11 @@ nav li a:hover{
 }
 /* Removing all borders */
 .categories .collection,
+.sidenav .collection,
 .admin-panel .collection
 {
   overflow: visible;
-  border: none;
+  border: none ;
 }
 .admin-panel{
   margin-top: 400px;
@@ -122,11 +139,7 @@ nav li a:hover{
 .admin-panel .collection a{
   background: transparent;
 }
-/* Aligning icons and badges*/
-.categories .material-icons,
-span.badge{
-  line-height: 20px !important;
-}
+
 /* Text-color */
 .categories h6{
   margin: 10px 10px;
@@ -134,17 +147,23 @@ span.badge{
   border-bottom: solid 1px white;
   font-weight: bold;
 }
+
+.sidenav .collection a,
 .categories a{
-  color: black !important;
   border: none !important;
   background: #37474f  !important;
   color: white !important;
   width: fit-content;
+  display: flex !important;
+  flex-direction: column !important;
+  transition-duration: .3s;
+  cursor: pointer;
 }
 /* Animation on hover */
 .categories a:hover{
   background-color: #37474f !important;
   transform: translateX(10px);
+  transition-duration: .3s;
   -webkit-box-shadow: inset 9px -2px 0px -2px rgba(48,124,255,1);
   -moz-box-shadow: inset 9px -2px 0px -2px rgba(48,124,255,1);
   box-shadow: inset 9px -2px 0px -2px rgba(48,124,255,1);
@@ -269,9 +288,6 @@ span.badge{
   margin-top: 10px;
   display: flex;
   position: relative;
-  /* top: 50%;
-  left: 50%; */
-  /* transform: translate(-50%, -50%); */
   justify-content: space-evenly;
 }
 
@@ -283,8 +299,9 @@ span.badge{
   align-self: flex-start;
 }
 
-.page button{
-  display: block;
+.page a{
+  display: flex;
+  justify-content: center;
   width: 100px;
   height: 40px;
   font-family: sans-serif;
@@ -297,9 +314,11 @@ span.badge{
   cursor: pointer;
 }
 
-.page button span{
+.page a span{
   position: relative;
   z-index: 2;
+  display: flex;
+  align-self: center;
 }
 
 .next-btn:after{
@@ -324,15 +343,15 @@ span.badge{
   transition: all .35s;
 }
 
-.page button:hover{
+.page a:hover{
   color: #fff;
 }
 
-.page button:hover:after{
+.page a:hover:after{
   width: 100%;
 }
 
-.page button:focus{
+.page a:focus{
   background-color: transparent;
 }
 
@@ -341,12 +360,7 @@ span.badge{
 .login-form{
   width: 40% !important;
   margin: 40px auto !important;
-  border: solid 1px rgb(204, 204, 204);
-  border-radius: 3px;
   padding: 20px;
-  -webkit-box-shadow: 2px 2px 5px 0px rgba(0,0,0,0.75);
-  -moz-box-shadow: 2px 2px 5px 0px rgba(0,0,0,0.75);
-  box-shadow: 2px 2px 5px 0px rgba(0,0,0,0.75);
 }
 .login-form button{
   margin-top: 20px;
